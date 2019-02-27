@@ -1,3 +1,5 @@
+from datetime import *
+
 class Employee:
 
     employee_nr = 0
@@ -15,6 +17,22 @@ class Employee:
 
     def applay_raise(self):
         self.pay = int(self.pay * self.raise_amount)
+
+    @classmethod
+    def set_raise_amount(cls, amount):
+        cls.raise_amount = amount
+
+    @classmethod
+    def from_string(cls, str_emp):
+        first, last, pay = str_emp.split('-')
+        return cls(first, last, pay)
+
+    @staticmethod
+    def is_working(data):
+        if data.weekday() == 5 or data.weekday() == 6:
+            return False
+        else:
+            return True
 
 
 def main():
@@ -36,6 +54,17 @@ def main():
     emp2.applay_raise()
     print(emp1.fullname())
     print(emp2.fullname())
+
+    print('Se aplica metoda class set_raise_amount:')
+    Employee.set_raise_amount(1.5)
+
+    print(Employee.raise_amount)
+    print(emp1.raise_amount) # pt emp1 ii inca camp instance
+    print(emp2.raise_amount)
+
+    print("Rezultatul unui constructor alternativ:")
+    print(Employee.from_string('Mircea-Mosul-1000').fullname())
+    print("Static methode:")
 
 
 if __name__ == '__main__':
