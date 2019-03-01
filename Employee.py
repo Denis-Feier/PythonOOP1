@@ -12,7 +12,7 @@ class Employee:
         Employee.employee_nr +=1
 
     def fullname(self):
-        return '{} {} {}'.format(self.first, self.last, self.pay)
+        return '{} {} {} {}'.format(self.first, self.last, self.pay, self.email)
 
     def applay_raise(self):
         self.pay = int(self.pay * self.raise_amount)
