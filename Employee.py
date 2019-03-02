@@ -8,11 +8,22 @@ class Employee:
         self.first = first
         self.last = last
         self.pay = pay
-        self.email = first + '.' + last + '@gmail.com'
+        #self.email = first + '.' + last + '@gmail.com'
         Employee.employee_nr +=1
 
+    @property
     def fullname(self):
         return '{} {} {} {}'.format(self.first, self.last, self.pay, self.email)
+
+    @property
+    def email(self):
+        return '{}.{}@gmail.com'.format(self.first, self.last)
+
+    @fullname.setter
+    def fullname(self, name):
+        first, last = name.split(' ')
+        self.first = first
+        self.last = last
 
     def applay_raise(self):
         self.pay = int(self.pay * self.raise_amount)

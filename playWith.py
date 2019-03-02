@@ -12,11 +12,13 @@ def main():
     emp2 = Employee('Mircea', 'Random', 1000000)
     man1 = Manager('oFemeie', "random", 10000)
 
-    print(emp1)
+    print(emp1.fullname)
     print(repr(emp2))
     print(repr(emp2 + emp1))
     print(argumente(man1,emp1, emp2))
 
+    emp1.fullname = 'Denis Feier'
+    print(emp1.fullname)
 
 if __name__ == '__main__':
     main()
