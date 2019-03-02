@@ -33,6 +33,20 @@ class Employee:
         else:
             return True
 
+    def __str__(self):
+        return "( " + self.last + " - " + self.first + " )"
+
+    def __repr__(self):
+        #return "Employee('"+self.first+"', '"+self.last +"', "+ str(self.pay) +")"
+        return "Employee('{}', '{}', {})".format(self.first, self.last, self.pay)
+
+    def __add__(self, other):
+        if isinstance(other, Employee):
+            return Employee(self.first + "---" + other.first, self.last + "---" + other.last, self.pay + other.pay)
+        else:
+            return NotImplemented
+
+
 
 def main():
     emp1 = Employee('Denis', 'Feier', 3000)

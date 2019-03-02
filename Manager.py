@@ -1,8 +1,10 @@
+from typing import List, Any
 
 from src.Employee import Employee
 
 
 class Manager(Employee):
+
     def __init__(self, first, last, pay, progl = None):
         super().__init__(first, last, pay)
         if progl is not None:
@@ -24,6 +26,12 @@ class Manager(Employee):
 
     def __str__(self):
         return '{} {} {} {}'.format(self.first, self.last, self.pay, self.progL)
+    
+    def __add__(self, other):
+        if isinstance(other, Manager):
+            return Manager(self.first + "---" + other.first, self.last + "---" + other.last, self.pay + other.pay, self.progL + other.progL)
+        else:
+            return NotImplemented
 
 
 def main():
